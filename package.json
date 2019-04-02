@@ -1,0 +1,21 @@
+{
+  "name": "AceEditor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server . ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosmico15/AceEditor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlosmico15/AceEditor/issues"
+  },
+  "homepage": "https://github.com/carlosmico15/AceEditor#readme"
+}

@@ -4,64 +4,8 @@
 <title>Integración ACE</title>
 
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="theme.css">
 <link rel="icon" type="image/png" href="img/logo.png">
-
-<style type="text/css" media="screen">
-  body {
-    background: #607d8b;
-    color: white;
-    font-family: 'Raleway', sans-serif;
-  }
-
-  #cabecera {
-    height: 100px;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 2.5em;
-  }
-
-  #editor {
-    position: absolute;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 20px;
-  }
-
-  #footer {
-    position: absolute;
-    height: 50px;
-    color: white;
-    text-align: center;
-    bottom: 0;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 25px;
-    font-style: bold;
-  }
-
-  p {
-    margin-left: 50px;
-  }
-
-  label {
-    margin-left: 5%;
-  }
-
-  input {
-    background-color: #607d8b;
-    border-radius: 50px;
-    color: white;
-  }
-</style>
 
 </html>
 
@@ -73,6 +17,9 @@
   <div id="editor"></div>
 
   <div id="footer">
+    <p>
+      <input id="btComprobar" type="button" onclick="comprobarCodigo()" value="Comprobar Código" />
+    </p>
     <p>
       <label id="lines"></label>
 
@@ -89,73 +36,9 @@
   </div>
 
   <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-  <script>
-    //Configuracion del editor
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/javascript");
+  <script src="js/funcionalidades.js" type="text/javascript" charset="utf-8"></script>
 
-    //Refresco del contador de lineas
-    var refresh = setInterval(refresh, 2);
 
-    function refresh() {
-      var lines = editor.session.getLength();
-
-      document.getElementById('lines').innerHTML = "Líneas: " + lines;
-    }
-
-    refresh();
-
-    //Modo lectura
-    var lectura = false;
-
-    function modoLectura() {
-      if (lectura) {
-        lectura = false;
-
-        editor.setReadOnly(false);
-
-        document.getElementById("btLectura").value = "Activar";
-
-        alert("Modo lectura desactivado.");
-      } else {
-        lectura = true;
-
-        editor.setReadOnly(true);
-
-        document.getElementById("btLectura").value = "Desactivar";
-
-        alert("Modo lectura activado.");
-
-        insertaFuncion();
-      }
-    }
-
-    //Insertar funcion ejemplo
-
-    function insertaFuncion(operacion) {
-      if (lectura) {
-        return;
-      }
-
-      switch (operacion) {
-        case "sumar":
-        editor.insert(
-          `function sumar(a, b) {
-  var suma = a + b;
-  return suma;
-}`);
-          break;
-
-          case "restar":
-          editor.insert(
-            `function restar(a, b) {
-  var resta = a - b;
-  return resta;
-}`);
-            break;
-      }
-    }
-  </script>
 </body>

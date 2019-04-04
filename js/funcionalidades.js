@@ -3,8 +3,12 @@ var editor = ace.edit(document.getElementById("editor"));
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/javascript");
 
+//import fit from './node_modules/xterm/lib/addons/fit';
+//Terminal.applyAddon(fit);
+
+//Configuracion del Terminal
 var term = new Terminal();
-term.open(document.getElementById('terminal'));
+term.open(document.getElementById('terminal'));    
 
 var estadoTerm = false;
 

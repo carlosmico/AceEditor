@@ -20,5 +20,9 @@
   "homepage": "https://github.com/carlosmico15/AceEditor#readme",
   "dependencies": {
     "xterm": "^3.12.0"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
   }
 }

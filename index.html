@@ -5,6 +5,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="theme.css">
+<link rel="stylesheet" href="node_modules/xterm/dist/xterm.css" />
 <link rel="icon" type="image/png" href="img/logo.png">
 
 </html>
@@ -14,29 +15,41 @@
     <h1>Integración ACE</h1>
   </div>
 
-  <div id="editor"></div>
+  <div id="complementos">
+    <div id="editor" class="editor-full"></div>
+
+    <div id="terminal"></div>
+  </div>
 
   <div id="footer">
-    <p>
-      <input id="btComprobar" type="button" onclick="comprobarCodigo()" value="Comprobar Código" />
-    </p>
-    <p>
-      <label id="lines"></label>
 
-      <label> Modo Lectura: </label>
+    <div id="footerEditor">
+      <p>
+        <input id="btComprobar" type="button" onclick="comprobarCodigo()" value="Comprobar Código" />
+      </p>
+      <p>
+        <label id="lines"></label>
 
-      <input id="btLectura" type="button" onclick="modoLectura()" value="Activar" />
+        <label> Modo Lectura: </label>
 
-      <label> Code: </label>
+        <input id="btLectura" type="button" onclick="modoLectura()" value="Activar" />
 
-      <input id="btFuncionEjemplo" type="button" onclick="insertaFuncion('sumar')" value="sumar()" />
+        <label> Code: </label>
 
-      <input id="btFuncionEjemplo" type="button" onclick="insertaFuncion('restar')" value="restar()" />
-    </p>
+        <input id="btFuncionEjemplo" type="button" onclick="insertaFuncion('sumar')" value="sumar()" />
+
+        <input id="btFuncionEjemplo" type="button" onclick="insertaFuncion('restar')" value="restar()" />
+      </p>
+    </div>
+
+    <div id="footerTerminal">
+      <input id="btMostrarTerm" type="button" onclick="mostrarTerminal()" value="Mostrar Terminal" />
+    </div>
   </div>
 
   <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="node_modules/xterm/dist/xterm.js"></script>
 
   <script src="js/funcionalidades.js" type="text/javascript" charset="utf-8"></script>
 

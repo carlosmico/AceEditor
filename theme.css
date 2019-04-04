@@ -13,33 +13,86 @@ body {
     font-size: 2.5em;
   }
 
-  #editor {
+  #complementos{
+  }
+
+  .editor-full{
+    width: 95%;
     position: absolute;
     margin-top: 100px;
     margin-bottom: 120px;
     top: 0;
-    right: 0;
     bottom: 0;
-    left: 0;
-    margin-left: 10%;
-    margin-right: 10%;
+    
+    margin-left: 2%;
     border-radius: 20px;
+
+    float: left;
   }
 
-  #footer {
+  .editor{
+    width: 45%;
     position: absolute;
+    margin-top: 100px;
+    margin-bottom: 120px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: 2%;
+    border-radius: 15px;
+
+    float: left;
+  }
+
+  .xterm-viewport{
+    border-radius: 15px;
+  }
+
+  .xterm-screen{
+    border-radius: 15px;
+  }
+
+  .xterm-text-layer{
+    border-radius: 15px;
+  }
+
+  .xterm-cursor-layer{
+    border-radius: 15px;
+
+  }
+
+  #footerEditor{
+    position: absolute;
+    width: 43%;
     height: 80px;
     color: white;
     text-align: center;
     bottom: 0;
-    margin-left: 10%;
-    margin-right: 10%;
+    left: 0;
+    margin-left: 2%;
     margin-bottom: 25px;
     font-style: bold;
   }
 
-  p {
-    margin-left: 50px;
+  #terminal{
+    width: 45%;
+    position: relative;
+    margin-right: 5%;
+    float: right;
+
+    visibility: hidden;
+  }
+
+  #footerTerminal {
+    position: absolute;
+    width: 43%;
+    height: 80px;
+    color: white;
+    text-align: center;
+    bottom: 0;
+    right: 0;
+    margin-right: 2%;
+    font-style: bold;
   }
 
   label {

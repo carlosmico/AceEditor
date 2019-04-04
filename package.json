@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/carlosmico15/AceEditor/issues"
   },
-  "homepage": "https://github.com/carlosmico15/AceEditor#readme"
+  "homepage": "https://github.com/carlosmico15/AceEditor#readme",
+  "dependencies": {
+    "xterm": "^3.12.0"
+  }
 }

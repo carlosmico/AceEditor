@@ -8,7 +8,7 @@ editor.session.setMode("ace/mode/javascript");
 
 //Configuracion del Terminal
 var term = new Terminal();
-term.open(document.getElementById('terminal'));    
+term.open(document.getElementById('terminal'));
 
 var estadoTerm = false;
 
@@ -109,7 +109,34 @@ function comprobarCodigo() {
     "clientSecret": "d7645cb793209a0fb1d11066f341fad4443f392c41ef7cc78bbc01472ea0e053"
   }
 
-  console.log(JSON.stringify(programa));
+  axios.post('http://127.0.0.1:3000/comprobarCodigo', programa)
+    .then(function (response) {
+      response = response.data;
+
+      console.log(JSON.stringify(response));
+
+      if(response.error === false){
+        insertaTerminal("Output=>" + response.mensaje );
+      }else{
+        insertaTerminal("Output=> ERROR! ErrorCode: " + response.codigo + " Mensaje: " + response.mensaje );
+      }
+
+      console.log("Respuesta: " + JSON.stringify(response));
+    })
+    .catch(function (error) {
+      alert("Error en la petición a la API: " + error);
+    });
+}
+
+/* Codigo ejemplo para mostrar en el terminal.
+  var programa = {
+    "script": codigo,
+    "language": "nodejs",
+    "versionIndex": "2",
+    "clientId": "afd8fd858fc5a7f6248b68a95d154249",
+    "clientSecret": "d7645cb793209a0fb1d11066f341fad4443f392c41ef7cc78bbc01472ea0e053"
+  }
+
 
   var respuesta = {
     "output": "4",
@@ -117,24 +144,4 @@ function comprobarCodigo() {
     "memory": "29156",
     "cpuTime": "0.09"
   }
-
-  insertaTerminal("Output:" + respuesta.output + " Status Code: " + respuesta.statusCode + " CPU Time: " + respuesta.cpuTime + " Memory:" + respuesta.memory);
-
-  /*
-  axios.post('https://api.jdoodle.com/execute', programa)
-    .then(function (response) {
-
-      if (response['status'] == 200) {
-        console.log("Tu código es correcto!");
-      }
-
-      console.log("respuesta" + JSON.stringify(response));
-    })
-    .catch(function (error) {
-      alert("Error en el código: " + error);
-      console.log(error);
-      console.log('error:', error);
-    });
-    */
-
-}
+*/

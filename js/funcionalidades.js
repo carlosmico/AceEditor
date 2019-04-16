@@ -36,7 +36,7 @@ function mostrarTerminal() {
 }
 
 function insertaTerminal(texto) {
-  term.write('Respuesta \x1B[1;3;31mJDoodle\x1B[0m $ ');
+  term.write('Respuesta \x1B[31mJDoodle\x1B[0m $ ');
   term.writeln(texto);
 }
 
@@ -99,11 +99,9 @@ function insertaFuncion(operacion) {
 function comprobarCodigo() {
   var codigo = editor.getValue();
 
-  console.log(codigo);
-
   var programa = {
     "script": codigo,
-    "language": "nodejs",
+    "language": "js",
     "versionIndex": "2",
     "clientId": "afd8fd858fc5a7f6248b68a95d154249",
     "clientSecret": "d7645cb793209a0fb1d11066f341fad4443f392c41ef7cc78bbc01472ea0e053"
@@ -111,17 +109,14 @@ function comprobarCodigo() {
 
   axios.post('http://127.0.0.1:3000/comprobarCodigo', programa)
     .then(function (response) {
-      response = response.data;
+      console.log("Respuesta de la API: " + JSON.stringify(response.data));
 
-      console.log(JSON.stringify(response));
-
-      if(response.error === false){
-        insertaTerminal("Output=>" + response.mensaje );
+      if(response.data.error === false){
+        insertaTerminal("Output=> " + response.data.mensaje );
       }else{
-        insertaTerminal("Output=> ERROR! ErrorCode: " + response.codigo + " Mensaje: " + response.mensaje );
+        insertaTerminal("Output=> \x1B[31mERROR! " + response.data.mensaje + "\x1B[0m");
       }
 
-      console.log("Respuesta: " + JSON.stringify(response));
     })
     .catch(function (error) {
       alert("Error en la petición a la API: " + error);
@@ -136,7 +131,6 @@ function comprobarCodigo() {
     "clientId": "afd8fd858fc5a7f6248b68a95d154249",
     "clientSecret": "d7645cb793209a0fb1d11066f341fad4443f392c41ef7cc78bbc01472ea0e053"
   }
-
 
   var respuesta = {
     "output": "4",
